@@ -148,13 +148,17 @@ Item {
 
     function normalize(orig_values, value, i) {
         var max_value = plasmoid.configuration.max_value
+        var min_value = plasmoid.configuration.min_value
+        if (value < min_value) {
+            return 0
+        }
         if (max_value == 0.0) {
             var values_sum = sum(orig_values)
             if (values_sum > Number(plasmoid.configuration.guessed_max_value))
                 plasmoid.configuration.guessed_max_value = values_sum
             max_value = plasmoid.configuration.guessed_max_value * 1.2
         }
-        value = value / max_value
+        value = (value - min_value) / (max_value - min_value)
         return isNaN(value)? 0: Math.min(value, 1)
     }
 

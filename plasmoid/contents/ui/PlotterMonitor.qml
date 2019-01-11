@@ -55,8 +55,8 @@ Item {
 
         autoRange: plasmoid.configuration.max_value == 0.0
 
-	rangeMin: 0
-	rangeMax: 1
+        rangeMin: 0
+        rangeMax: 1
 
         dataSets: make_data_set()
     }

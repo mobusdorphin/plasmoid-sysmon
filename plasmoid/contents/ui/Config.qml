@@ -29,6 +29,7 @@ Item {
     property alias cfg_monitor_type: type_combo.currentIndex
     property alias cfg_update_interval: update_interval_spinbox.value
     property alias cfg_max_value: max_value_spinbox.value
+    property alias cfg_min_value: min_value_spinbox.value
     property alias cfg_multiplier: multiplier_spinbox.value
     property alias cfg_use_value_as_label: use_value_as_label_checkbox.checked
     property string cfg_default_color
@@ -103,6 +104,19 @@ Item {
             Layout.preferredWidth: 20 * theme.mSize(theme.defaultFont).width
         }
 
+        QtControls.Label {
+            text: i18n("Forced Minimum Value:")
+            Layout.alignment: Qt.AlignRight
+        }
+        
+        QtControls.SpinBox {
+            id: min_value_spinbox
+            minimumValue: 0.0
+            maximumValue: max_value_spinbox.value
+            stepSize: 1.0
+            Layout.preferredWidth: 20 * theme.mSize(theme.defaultFont).width
+        }
+        
         QtControls.Label {
             text: i18n("Value Multiplier:")
             Layout.alignment: Qt.AlignRight
